@@ -1,4 +1,12 @@
-## [1.0.1] - TODO: Add release date.
+## [1.0.3] - TODO: Add release date.
+
+* Added example project in /example/#
+
+## [1.0.2-dev.1.] - TODO: Add release date.
+
+* Added example project in /example/#
+
+[1.0.2] - TODO: Add release date.
 
 * Added example project in /example/
 

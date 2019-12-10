@@ -1,14 +1,67 @@
-# animated_bottombar
+![Pub](https://img.shields.io/pub/v/fancy_bar)
 
-An animated bottom bar flutter package.
+# FancyBar
+
+A fancy yet beautiful animated widget for your Flutter apps
+
+| Preview |
+|---------|----------|
+|![FancyBar Gif](https://raw.githubusercontent.com/leoelstin/Flutter-UI-Kits/master/images/ezgif.com-crop.gif) |
+
+## Customization (Optional)
+
+### FancyBar
+
+`items` - navigation items, required more than one item and less than six<br/>
+`selectedIndex` - the current item index. Use this to change the selected item. Default to zero<br/>
+`onItemSelected` - required to listen when a item is tapped it provide the selected item's index<br/>
+
+
+### FancyItem
+`icon` - the widget of this item. Your can pass any widget as param.<br/>
+`title` - the text that will appear next to the icon when this item is selected.<br/>
+`textColor` - the active item's  text color<br/>
 
 ## Getting Started
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+Add the plugin:
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+```yaml
+dependencies:
+  fancy_bar: ^1.0.0
+```
+
+## Basic Usage
+
+Adding the widget
+
+```dart
+bottomNavigationBar: FancyBottomBar(
+        items: [
+          FancyItem(
+            textColor: Colors.orange,
+            title: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          FancyItem(
+            textColor: Colors.red,
+            title: 'Trending',
+            icon: Icon(Icons.trending_up),
+          ),
+          FancyItem(
+            textColor: Colors.green,
+            title: 'Search',
+            icon: Icon(Icons.search),
+          ),
+          FancyItem(
+            textColor: Colors.brown,
+            title: 'Settings',
+            icon: Icon(Icons.settings),
+          ),
+        ],
+        onItemSelected: (index) {
+          print(index);
+        },
+      ),
+```
+

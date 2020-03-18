@@ -1,6 +1,6 @@
 name: fancy_bar
-description: An fancy yet beautiful flutter widget to use witht he bottomNavigationBar, supports on selected and works with any widgets.
-version: 1.0.3
+description: An fancy yet beautiful flutter widget to use with the bottomNavigationBar, supports on selected and works with any widgets.
+version: 1.2.0
 homepage: https://github.com/leoelstin/fancy_bar
 
 environment:

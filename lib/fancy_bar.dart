@@ -91,13 +91,13 @@ class _ItemVWidget extends StatelessWidget {
               duration: Duration(milliseconds: 250),
               child: isSelected
                   ? Text(
-                '${item.title}',
-                style: TextStyle(
-                    color:
-                    item.textColor ?? Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
-              )
+                      '${item.title}',
+                      style: TextStyle(
+                          color:
+                              item.textColor ?? Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    )
                   : item.icon,
             ),
           );
@@ -160,13 +160,13 @@ class _ItemVWidget extends StatelessWidget {
               duration: Duration(milliseconds: 250),
               child: isSelected
                   ? Text(
-                '${item.title}',
-                style: TextStyle(
-                    color:
-                    item.textColor ?? Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
-              )
+                      '${item.title}',
+                      style: TextStyle(
+                          color:
+                              item.textColor ?? Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    )
                   : item.icon,
             ),
           );

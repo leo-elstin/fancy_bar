@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 enum FancyType { FancyV1, FancyV2 }
 
 class FancyBottomBar extends StatefulWidget {
-  final List<FancyItem> items;
+  final List<FancyItem>? items;
   final selectedIndex;
-  final ValueChanged<int> onItemSelected;
-  final FancyType type;
+  final ValueChanged<int>? onItemSelected;
+  final FancyType? type;
 
   FancyBottomBar({
     this.items,
@@ -17,7 +17,7 @@ class FancyBottomBar extends StatefulWidget {
     this.type,
   }) {
     assert(items != null);
-    assert(items.length >= 2 && items.length <= 4);
+    assert(items!.length >= 2 && items!.length <= 4);
     assert(onItemSelected != null);
   }
 
@@ -40,19 +40,19 @@ class _FancyBottomBarState extends State<FancyBottomBar> {
       child: BottomAppBar(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: widget.items.map((_item) {
+          children: widget.items!.map((_item) {
             FancyItem item = _item;
-            var index = widget.items.indexOf(_item);
+            var index = widget.items!.indexOf(_item);
             return InkWell(
               onTap: () {
                 setItem(index);
-                widget.onItemSelected(index);
+                widget.onItemSelected!(index);
               },
               child: _ItemVWidget(
                 item: item,
                 isSelected: index == pos,
-                length: widget.items.length,
-                type: widget?.type,
+                length: widget.items!.length,
+                type: widget.type,
               ),
             );
           }).toList(),
@@ -63,13 +63,13 @@ class _FancyBottomBarState extends State<FancyBottomBar> {
 }
 
 class _ItemVWidget extends StatelessWidget {
-  final FancyItem item;
-  final bool isSelected;
-  final int length;
-  final FancyType type;
+  final FancyItem? item;
+  final bool? isSelected;
+  final int? length;
+  final FancyType? type;
 
   const _ItemVWidget(
-      {Key key, this.item, this.isSelected, this.length, this.type})
+      {Key? key, this.item, this.isSelected, this.length, this.type})
       : super(key: key);
 
   @override
@@ -78,7 +78,7 @@ class _ItemVWidget extends StatelessWidget {
       case FancyType.FancyV1:
         {
           return Container(
-            width: MediaQuery.of(context).size.width / length,
+            width: MediaQuery.of(context).size.width / length!,
             height: kBottomNavigationBarHeight,
             alignment: Alignment.center,
             child: AnimatedSwitcher(
@@ -89,16 +89,15 @@ class _ItemVWidget extends StatelessWidget {
                 );
               },
               duration: Duration(milliseconds: 250),
-              child: isSelected
+              child: isSelected!
                   ? Text(
-                      '${item.title}',
+                      '${item!.title}',
                       style: TextStyle(
-                          color:
-                              item.textColor ?? Theme.of(context).primaryColor,
+                          color: item!.textColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 16),
                     )
-                  : item.icon,
+                  : item!.icon,
             ),
           );
         }
@@ -106,7 +105,7 @@ class _ItemVWidget extends StatelessWidget {
       case FancyType.FancyV2:
         {
           return Container(
-            width: MediaQuery.of(context).size.width / length,
+            width: MediaQuery.of(context).size.width / length!,
             height: kBottomNavigationBarHeight,
             child: AnimatedContainer(
               height: 0,
@@ -116,12 +115,12 @@ class _ItemVWidget extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     alignment: Alignment.center,
-                    child: item.icon,
+                    child: item!.icon,
                   ),
                   AnimatedContainer(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: isSelected ? item.textColor : Colors.transparent,
+                      color: isSelected! ? item!.textColor : Colors.transparent,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(24),
                         bottomRight: Radius.circular(24),
@@ -130,9 +129,9 @@ class _ItemVWidget extends StatelessWidget {
                       ),
                     ),
                     duration: Duration(milliseconds: 300),
-                    height: isSelected ? kToolbarHeight : 24,
+                    height: isSelected! ? kToolbarHeight : 24,
                     child: Text(
-                      '${item.title}',
+                      '${item!.title}',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -147,7 +146,7 @@ class _ItemVWidget extends StatelessWidget {
       default:
         {
           return Container(
-            width: MediaQuery.of(context).size.width / length,
+            width: MediaQuery.of(context).size.width / length!,
             height: kBottomNavigationBarHeight,
             alignment: Alignment.center,
             child: AnimatedSwitcher(
@@ -158,16 +157,15 @@ class _ItemVWidget extends StatelessWidget {
                 );
               },
               duration: Duration(milliseconds: 250),
-              child: isSelected
+              child: isSelected!
                   ? Text(
-                      '${item.title}',
+                      '${item!.title}',
                       style: TextStyle(
-                          color:
-                              item.textColor ?? Theme.of(context).primaryColor,
+                          color: item!.textColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 16),
                     )
-                  : item.icon,
+                  : item!.icon,
             ),
           );
         }
@@ -179,12 +177,12 @@ class FancyItem {
   Color textColor;
   String title;
   Widget icon;
-  FancyType type;
+  FancyType? type;
 
   FancyItem({
-    @required this.textColor,
-    @required this.title,
-    @required this.icon,
+    required this.textColor,
+    required this.title,
+    required this.icon,
     this.type,
   });
 }
